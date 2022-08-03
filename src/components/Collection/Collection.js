@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 import AddCollectionModal from "../AddCollectionModal/AddCollectionModal";
+import Alert from "../Alert/Alert";
 import CollectionCard from "../CollectionCard/CollectionCard";
 
 import { 
@@ -13,13 +14,14 @@ import {
 const Collection = () => {
     const [collections, setCollections] = useState(Object.keys(localStorage));
     const [showAddModal, setShowAddModal] = useState(false);
+    const [showAddAlert, setShowAddAlert] = useState(false);
 
     useEffect(() => {
        const onStorage = () => {
         setCollections(Object.keys(localStorage))
        };
        window.addEventListener('storage', onStorage);
-    }, [])
+    }, []);
 
     const onCancelAddModal = (e) => {
         e.preventDefault();
@@ -35,8 +37,17 @@ const Collection = () => {
         <>
             {showAddModal && 
                 <AddCollectionModal
-                    onCancel={onCancelAddModal}
+                    onAlert={setShowAddAlert}
+                    onClose={onCancelAddModal}
                     onVisibilityChange={setShowAddModal}
+                />
+            }
+
+            {showAddAlert && 
+                <Alert
+                    actionCategory="added"
+                    objectCategory="collection"
+                    onClose={setShowAddAlert}
                 />
             }
 
@@ -46,13 +57,11 @@ const Collection = () => {
 
                 {collections.map((collection, key) => {
                     return(
-                        <>
-                            <CollectionCard 
-                                key={key}
-                                image={JSON.parse(localStorage.getItem(collection))[0]?.coverImage.large} 
-                                name={collection}
-                            />
-                        </>
+                        <CollectionCard 
+                            key={key}
+                            image={JSON.parse(localStorage.getItem(collection))[0]?.coverImage.large} 
+                            name={collection}
+                        />
                     )
                 })}
             </div>

@@ -58,5 +58,6 @@ export const addToCollectionModalInput = css`
 `;
 
 export const addToCollectionModalInputLabel = css`
+    display: block;
     color: white;
 `;

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { checkSpecialCharacters } from "../../function/checkSpecialCharacters";
+import Alert from "../Alert/Alert";
 import EditCollectionNameModal from "../EditCollectionNameModal/EditCollectionNameModal";
 import RemoveCollectionModal from "../RemoveCollectionModal/RemoveCollectionModal";
 
@@ -21,6 +21,8 @@ import {
 const CollectionCard = (props) => {
     const [showEditModal, setShowEditModal] = useState(false);
     const [showRemoveModal, setShowRemoveModal] = useState(false);
+    const [showEditAlert, setShowEditAlert] = useState(false);
+    const [showRemoveAlert, setShowRemoveAlert] = useState(false);
 
     const onEditClick = (e) => {
         e.preventDefault();
@@ -44,6 +46,7 @@ const CollectionCard = (props) => {
         localStorage.removeItem(props.name);
         window.dispatchEvent(new Event("storage"));
         setShowRemoveModal(false);
+        setShowRemoveAlert(true);
     }
 
     return(
@@ -51,6 +54,7 @@ const CollectionCard = (props) => {
             {showEditModal && 
                 <EditCollectionNameModal
                     previousName={props.name}
+                    onAlert={setShowEditAlert}
                     onClose={onCloseEditModal}
                     onVisibilityChange={setShowEditModal}
                 />
@@ -60,6 +64,21 @@ const CollectionCard = (props) => {
                     collectionName={props.name} 
                     onClose={onCloseRemoveModal}
                     onRemove={removeCollection}
+                />
+            }
+
+            {showEditAlert && 
+                <Alert 
+                    actionCategory="edited"
+                    objectCategory="collection"
+                    onClose={setShowEditAlert}
+                />
+            }
+            {showRemoveAlert && 
+                <Alert 
+                    actionCategory="removed"
+                    objectCategory="collection"
+                    onClose={setShowRemoveAlert}
                 />
             }
             

@@ -54,6 +54,7 @@ const AddToCollection = (props) => {
         }
 
         props.onChangeVisibility(false);
+        props.onAlert(true);
     }
 
     useEffect(() => {

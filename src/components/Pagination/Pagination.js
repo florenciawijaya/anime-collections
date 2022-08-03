@@ -41,9 +41,9 @@ const Pagination = (props) => {
             <button css={paginationPrevButton} onClick={onPrev} disabled={currentPage === 1}>Prev</button>
             <button css={paginationNextButton} onClick={onNext} disabled={currentPage === lastPage}>Next</button>
             <select css={paginationSelect} value={currentPage} onChange={onSelectChange}>
-                {range().map((r) => {
+                {range().map((r, key) => {
                     return(
-                        <option value={r}>{r}</option>
+                        <option key={key} value={r}>{r}</option>
                     )
                 })}
             </select>

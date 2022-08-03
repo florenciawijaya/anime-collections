@@ -23,6 +23,7 @@ const EditCollectionName = (props) => {
         }
 
         props.onVisibilityChange(false);
+        props.onAlert(true);
     }
 
     return(

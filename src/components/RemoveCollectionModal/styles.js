@@ -6,6 +6,11 @@ export const removeCollectionModalButtons = css`
     display: flex;
     justify-content: center;
     margin-top: 1rem;
+
+    @media (max-width: 350px) {
+        display: block;
+        text-align: center;
+    }
 `;
 
 export const removeCollectionModalCloseButton = css`
@@ -15,6 +20,12 @@ export const removeCollectionModalCloseButton = css`
     border: 1px solid white;
     border-radius: 5px;
     color: white;
+
+    @media (max-width: 350px) {
+        margin-top: 1rem;
+        margin-right: 0;
+        padding: 0.1rem 2.5rem;
+    }
 `;
 
 export const removeCollectionModalCollectionName = css`
@@ -44,6 +55,12 @@ export const removeCollectionModalRemoveButton = css`
     border: 1px solid white;
     border-radius: 5px;
     color: white;
+
+    @media (max-width: 350px) {
+        margin-top: 1rem;
+        margin-left: 0;
+        padding: 0.1rem 2.5rem;
+    }
 `;
 
 export const removeCollectionModalText = css`

@@ -20,6 +20,7 @@ const AddCollectionModal = (props) => {
         }
         
         props.onVisibilityChange(false);
+        props.onAlert(true);
     }
 
     return(

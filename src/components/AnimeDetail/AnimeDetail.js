@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { useParams, Link } from "react-router-dom";
 
+import Alert from "../Alert/Alert";
 import AddAnimeToCollectionModal from "../AddAnimeToCollectionModal/AddAnimeToCollectionModal";
 import { GET_ANIME_DETAIL } from "../../queries/animeDetail";
 import { 
@@ -25,6 +26,7 @@ const AnimeDetail = () => {
     const { id } = useParams();
     const [collections, setCollections] = useState([]);
     const [showAddModal, setShowAddModal] = useState(false);
+    const [showAddAlert, setShowAddAlert] = useState(false);
 
     useEffect(() => {
         const res = getCollections();
@@ -74,10 +76,20 @@ const AnimeDetail = () => {
                 <AddAnimeToCollectionModal 
                     anime={data.Media}
                     existingCollections={collections}
+                    onAlert={setShowAddAlert}
                     onCancel={onCancelAdd}
                     onChangeVisibility={setShowAddModal}
                 />
             }
+
+            {showAddAlert && 
+                <Alert
+                    actionCategory="added"
+                    objectCategory="anime"
+                    onClose={setShowAddAlert}
+                />
+            }
+
             {!loading && 
                 <>
                     <p css={animeDetailTitle}>{data.Media.title.romaji}</p>

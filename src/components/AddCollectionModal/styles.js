@@ -9,12 +9,23 @@ export const addCollectionModalAddButton = css`
     border: 1px solid white;
     border-radius: 5px;
     color: white;
+
+    @media (max-width: 350px) {
+        margin-top: 1rem;
+        margin-left: 0;
+        padding: 0.1rem 2rem;
+    }
 `;
 
 export const addCollectionModalButtons = css`
     display: flex;
     justify-content: center;
     margin-top: 1rem;
+
+    @media (max-width: 350px) {
+        display: block;
+        text-align: center;
+    }
 `;
 
 export const addCollectionModalCloseButton = css`
@@ -24,6 +35,12 @@ export const addCollectionModalCloseButton = css`
     border: 1px solid white;
     border-radius: 5px;
     color: white;
+
+    @media (max-width: 350px) {
+        margin-top: 1rem;
+        margin-right: 0;
+        padding: 0.1rem 2rem;
+    }
 `;
 
 export const addCollectionModalContainer = css`

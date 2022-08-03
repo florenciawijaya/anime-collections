@@ -4,7 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
 
-import AnimeContextProvider from './context';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -18,9 +17,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <ApolloProvider client={client}>
-      <AnimeContextProvider>
-        <App />
-      </AnimeContextProvider>
+      <App />
     </ApolloProvider>
   </BrowserRouter>
 );

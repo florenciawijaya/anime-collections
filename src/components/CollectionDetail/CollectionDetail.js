@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+import Alert from "../Alert/Alert";
 import AnimeCard from "../AnimeCard/AnimeCard";
-import RemoveAnimeFromCollection from "../RemoveAnimeFromCollection/RemoveAnimeFromCollection";
+import RemoveAnimeFromCollectionModal from "../RemoveAnimeFromCollectionModal/RemoveAnimeFromCollectionModal";
 
 import { 
     collectionDetailName,
@@ -16,6 +17,7 @@ const CollectionDetail = () => {
 
     const [animes, setAnimes] = useState(JSON.parse(localStorage.getItem(name)));
     const [showRemoveModal, setShowRemoveModal] = useState(false);
+    const [showRemoveAlert, setShowRemoveAlert] = useState(false);
     const [removedAnime, setRemovedAnime] = useState("");
 
     useEffect(() => {
@@ -41,17 +43,27 @@ const CollectionDetail = () => {
         localStorage.setItem(name, JSON.stringify(animes));
         window.dispatchEvent(new Event("storage"));
         setShowRemoveModal(false);
+        setShowRemoveAlert(true);
     }
 
     return(
         <>
             {showRemoveModal && 
-                <RemoveAnimeFromCollection
+                <RemoveAnimeFromCollectionModal
                     animeName={removedAnime}
                     onClose={onCloseRemoveModal}
                     onRemove={removeAnime}
                 />
             }
+
+            {showRemoveAlert && 
+                <Alert
+                    actionCategory="removed"
+                    objectCategory="anime"
+                    onClose={setShowRemoveAlert}
+                />
+            }
+
             <div>
                 <p css={collectionDetailName}>{name}</p>
                 {animes.length ? 
