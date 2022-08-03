@@ -7,7 +7,7 @@ import { GET_ANIME_LIST } from "../../queries/anime";
 import AnimeCard from "../AnimeCard/AnimeCard";
 import Pagination from "../Pagination/Pagination";
 
-import { animePageTitle } from "./styles";
+import { animePageLoading, animePageTitle } from "./styles";
 
 const Anime = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -15,7 +15,7 @@ const Anime = () => {
     const { data, loading, error } = useQuery(GET_ANIME_LIST, {
         variables: { "page": currentPage, "perPage": 10 }
     })
-    if(loading) return <p>Loading...</p>
+    if(loading) return <p css={animePageLoading}>Loading...</p>
     if (error) return <p>Error: {error}</p>
     
     return(

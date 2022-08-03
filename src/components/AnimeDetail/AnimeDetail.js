@@ -11,6 +11,7 @@ import {
     addToCollectionButton,
     animeDetailDescription,
     animeDetailImage, 
+    animeDetailLoading,
     animeDetailSectionName,
     animeDetailTable, 
     animeDetailTableBody, 
@@ -67,7 +68,7 @@ const AnimeDetail = () => {
     const { data, loading, error } = useQuery(GET_ANIME_DETAIL, {
         variables: { "id": id }
     })
-    if(loading) return <p>Loading...</p>
+    if(loading) return <p css={animeDetailLoading}>Loading...</p>
     if(error) return <p>Error: {error}</p>
 
     return(

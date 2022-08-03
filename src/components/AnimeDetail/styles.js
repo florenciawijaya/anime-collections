@@ -25,6 +25,11 @@ export const animeDetailImage = css`
     margin-top: 20px;
 `;
 
+export const animeDetailLoading = css`
+    font-style: italic;
+    margin: 10px;
+`;
+
 export const animeDetailImageDiv = css`
     margin: auto;
 `;
