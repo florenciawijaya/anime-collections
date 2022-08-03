@@ -2,6 +2,15 @@
 
 import { css } from "@emotion/react";
 
+export const animeCardCategoryTitle = css`
+    display: none;
+
+    @media (min-width: 480px) {
+        display: block;
+        font-style: italic;
+    }
+`;
+
 export const animeCardContainer = css`
     border: 1px solid #EBDCB2;
     border-radius: 10px;

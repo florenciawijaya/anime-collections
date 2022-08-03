@@ -7,7 +7,7 @@ import { GET_ANIME_LIST } from "../../queries/anime";
 import AnimeCard from "../AnimeCard/AnimeCard";
 import Pagination from "../Pagination/Pagination";
 
-import { animePageLoading, animePageTitle } from "./styles";
+import { animePageFlexContainer, animePageFlexElement, animePageLoading, animePageTitle } from "./styles";
 
 const Anime = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -21,16 +21,22 @@ const Anime = () => {
     return(
         <div>
             <p css={animePageTitle}>Anime List</p>
-            {!loading && 
-                data.Page.media.map((anime, key) => {
-                    return(
-                        <AnimeCard 
-                            key={key}
-                            anime={anime}
-                        />
-                    )
-                })
-            }
+
+            <div css={animePageFlexContainer}>
+                {!loading && 
+                    data.Page.media.map((anime, key) => {
+                        return(
+                            <div css={animePageFlexElement}>
+                                <AnimeCard 
+                                    key={key}
+                                    anime={anime}
+                                />
+                            </div>
+                        )
+                    })
+                }
+            </div>
+
             <Pagination 
                 currentPage={currentPage}
                 totalData={data.Page.pageInfo.total}

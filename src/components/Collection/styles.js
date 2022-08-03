@@ -11,6 +11,19 @@ export const collectionPageAddButton = css`
     color: white;
 `;
 
+export const collectionPageFlexContainer = css`
+    @media (min-width: 480px) {
+        display: flex;
+        flex-wrap: wrap;
+    }
+`;
+
+export const collectionPageFlexElement = css`
+    @media (min-width: 480px) {
+        flex-basis: 50%;
+    }
+`;
+
 export const collectionPageNoAnime = css`
     font-style: italic;
     margin: 10px;

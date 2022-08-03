@@ -111,7 +111,15 @@ const AnimeDetail = () => {
                             <tbody css={animeDetailTableBody}>
                                 <tr css={animeDetailTableRow}>
                                     <td css={animeDetailTableDetail}>{data.Media.title.native}</td>
-                                    <td css={animeDetailTableDetail}>{data.Media.title.english}</td>
+
+                                    <td css={animeDetailTableDetail}>
+                                        {data.Media.title.english ? 
+                                            <p>{data.Media.title.english}</p>
+                                            :
+                                            <p>-</p>
+                                        }
+                                    </td>
+
                                     <td css={animeDetailTableDetail}>
                                         {data.Media.genres.map((genre, key) => {
                                             return(
@@ -119,8 +127,17 @@ const AnimeDetail = () => {
                                             )
                                         })}
                                     </td>
+
                                     <td css={animeDetailTableDetail}>{data.Media.episodes}</td>
-                                    <td css={animeDetailTableDetail}>{data.Media.averageScore}</td>
+
+                                    <td css={animeDetailTableDetail}>
+                                        {data.Media.averageScore ? 
+                                            <p>{data.Media.averageScore}</p>
+                                            :
+                                            <p>-</p>
+                                        }
+                                    </td>
+                                    
                                     <td css={animeDetailTableDetail}>
                                         {collections.length ? 
                                             collections.map((collection, key) => {

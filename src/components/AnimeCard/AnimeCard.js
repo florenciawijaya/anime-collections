@@ -3,6 +3,7 @@
 import { Link } from "react-router-dom";
 
 import { 
+    animeCardCategoryTitle,
     animeCardContainer,
     animeContent,
     animeCardImage,
@@ -20,8 +21,15 @@ const AnimeCard = (props) => {
                 <section css={animeContent}>
                     <img src={anime.coverImage.large} css={animeCardImage}/>
                     <section css={animeCardTitleSection}>
+                        <p css={animeCardCategoryTitle}>Romaji Title</p>
                         <p css={animeCardTitle}>{anime.title.romaji}</p>
-                        {anime.title.romaji?.toLowerCase() !== anime.title.english?.toLowerCase() && <p css={animeCardTitle}>{anime.title.english}</p>}
+                        {anime.title.english && 
+                        anime.title.romaji?.toLowerCase() !== anime.title.english?.toLowerCase() && 
+                        <div>
+                            <p css={animeCardCategoryTitle}>English Title</p>
+                            <p css={animeCardTitle}>{anime.title.english}</p>
+                        </div>
+                        }
                     </section>
                 </section>
             </Link>

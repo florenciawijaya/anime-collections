@@ -36,6 +36,10 @@ export const paginationSelect = css`
     color: #75868E;
     border: 1px solid #C58059;
     border-radius: 10px;
+
+    @media (min-width: 480px) {
+        width: 20%;
+    }
 `;
 
 export const paginationText = css`

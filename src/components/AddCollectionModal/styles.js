@@ -74,4 +74,5 @@ export const addCollectionModalInput = css`
 
 export const addCollectionModalLabel = css`
     color: white;
+    display: block;
 `;
