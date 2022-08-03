@@ -9,6 +9,11 @@ export const collectionDetailName = css`
     margin: 10px;
 `;
 
+export const collectionDetailNoAnime = css`
+    font-style: italic;
+    margin: 10px;
+`;
+
 export const collectionDetailRemoveButton = css`
     display: block;
     padding: 10px 15px;

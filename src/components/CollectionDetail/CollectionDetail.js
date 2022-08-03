@@ -9,6 +9,7 @@ import RemoveAnimeFromCollectionModal from "../RemoveAnimeFromCollectionModal/Re
 
 import { 
     collectionDetailName,
+    collectionDetailNoAnime,
     collectionDetailRemoveButton
 } from "./styles";
 
@@ -80,7 +81,7 @@ const CollectionDetail = () => {
                         )
                     })
                     :
-                    <p>Nothing</p>
+                    <p css={collectionDetailNoAnime}>No anime yet</p>
                 }
             </div>
         </>

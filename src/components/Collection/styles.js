@@ -11,6 +11,11 @@ export const collectionPageAddButton = css`
     color: white;
 `;
 
+export const collectionPageNoAnime = css`
+    font-style: italic;
+    margin: 10px;
+`;
+
 export const collectionPageTitle = css`
     font-size: 30px;
     font-weight: 700;

@@ -8,6 +8,7 @@ import CollectionCard from "../CollectionCard/CollectionCard";
 
 import { 
     collectionPageAddButton, 
+    collectionPageNoAnime,
     collectionPageTitle 
 } from "./styles";
 
@@ -55,15 +56,19 @@ const Collection = () => {
                 <p css={collectionPageTitle}>Collections</p>
                 <button css={collectionPageAddButton} onClick={onClickAdd}>Add Collection</button>
 
-                {collections.map((collection, key) => {
-                    return(
-                        <CollectionCard 
-                            key={key}
-                            image={JSON.parse(localStorage.getItem(collection))[0]?.coverImage.large} 
-                            name={collection}
-                        />
-                    )
-                })}
+                {collections.length ? 
+                    collections.map((collection, key) => {
+                        return(
+                            <CollectionCard 
+                                key={key}
+                                image={JSON.parse(localStorage.getItem(collection))[0]?.coverImage.large} 
+                                name={collection}
+                            />
+                        )
+                    })
+                    :
+                    <p css={collectionPageNoAnime}>No collection yet</p>
+                }
             </div>
         </>
     )
