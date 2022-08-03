@@ -57,6 +57,12 @@ export const editCollectionNameModalEditButton = css`
     }
 `;
 
+export const editCollectionNameModalError = css`
+    font-size: 10px;
+    font-style: italic;
+    color: white;
+`;
+
 export const editCollectionNameModalInput = css`
     border: 1px solid #C58059;
     border-radius: 5px;    

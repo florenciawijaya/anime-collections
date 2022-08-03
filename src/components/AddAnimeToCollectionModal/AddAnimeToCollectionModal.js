@@ -10,13 +10,15 @@ import {
     addToCollectionModalCheckboxLabel,
     addToCollectionModalCloseButton,
     addToCollectionModalContainer,
+    addToCollectionModalError,
     addToCollectionModalInput,
     addToCollectionModalInputLabel
 } from "./styles";
 
-const AddToCollection = (props) => {
+const AddToCollectionModal = (props) => {
     const [availableCollections, setAvailableCollections] = useState([]);
     const [checked, setChecked] = useState([]);
+    const [error, setError] = useState(false);
 
     const getAvailableCollections = () => {
         const res = Object.keys(localStorage).filter(coll => !props.existingCollections.includes(coll))
@@ -44,6 +46,10 @@ const AddToCollection = (props) => {
                 selectedCollectionValues.push(props.anime);
                 localStorage.setItem(collection, JSON.stringify(selectedCollectionValues));
                 window.dispatchEvent(new Event("storage"));
+
+                setError(false);
+                props.onChangeVisibility(false);
+                props.onAlert(true);
             }
         }
         
@@ -51,10 +57,12 @@ const AddToCollection = (props) => {
             const value = [props.anime];
             localStorage.setItem(newCollection, JSON.stringify(value));
             window.dispatchEvent(new Event("storage"));
-        }
 
-        props.onChangeVisibility(false);
-        props.onAlert(true);
+            props.onChangeVisibility(false);
+            props.onAlert(true);
+        } else {
+            setError(true);
+        }
     }
 
     useEffect(() => {
@@ -79,6 +87,11 @@ const AddToCollection = (props) => {
                 <section>
                     <label css={addToCollectionModalInputLabel}>If collection is new</label>
                     <input css={addToCollectionModalInput} name="inputNewCollection" placeholder="Input here...."/>
+                    {error && 
+                        <p css={addToCollectionModalError}>
+                            Collection name must be unique and not contain any special character
+                        </p>
+                    }
                 </section>
 
                 <section css={addToCollectionModalButtons}>
@@ -90,4 +103,4 @@ const AddToCollection = (props) => {
     )
 }
 
-export default AddToCollection;
+export default AddToCollectionModal;

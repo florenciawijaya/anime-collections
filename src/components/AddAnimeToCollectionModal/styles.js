@@ -49,6 +49,12 @@ export const addToCollectionModalContainer = css`
     z-index: 2;
 `;
 
+export const addToCollectionModalError = css`
+    font-size: 10px;
+    font-style: italic;
+    color: white;
+`;
+
 export const addToCollectionModalInput = css`
     border: 1px solid #C58059;
     border-radius: 5px;    
