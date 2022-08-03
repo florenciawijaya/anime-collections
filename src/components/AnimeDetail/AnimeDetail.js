@@ -47,10 +47,7 @@ const AnimeDetail = () => {
         const res = []
         for(let key of keys) {
             const values = JSON.parse(localStorage.getItem(key)); 
-            const index = values.findIndex(anime => anime.id === parseInt(id));
-            if(index !== -1) {
-                res.push(key);
-            }
+            if(values.some(anime => anime.id === parseInt(id))) res.push(key);
         }
         return res;
     }
