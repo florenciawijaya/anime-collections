@@ -1,4 +1,4 @@
-A website to see a list of animes and create your own anime collection. The anime data are obtained from AniList GraphQL API.
+A mobile-first website to see a list of animes and create your own anime collection. The anime data are obtained from AniList GraphQL API.
 
 # Result
 https://marvelous-klepon-deb740.netlify.app/
